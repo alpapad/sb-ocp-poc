@@ -1,0 +1,20 @@
+version: "2" 
+services:
+  config-map:
+    image: alpapad/dummy-config-map:latest
+    container_name: config-map
+  spring-grpc-server:
+    hostname: grpcserver
+    container_name: grpcserver
+    image: alpapad/spring-grc-server:latest
+    ports:
+       - 9090:9090
+    volumes_from:
+      - config-map:ro
+  spring-grpc-client:
+    hostname: grpcclient
+    container_name: grpcclient
+    image: alpapad/spring-grpc-client:latest
+    volumes_from:
+      - config-map:ro
+

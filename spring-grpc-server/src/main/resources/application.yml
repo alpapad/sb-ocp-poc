@@ -1,0 +1,15 @@
+spring:
+  main:
+    banner-mode: log
+  application:
+   name: test-microservice
+   
+grpc:
+  server:
+    port: 9090
+    security:
+#      certificate-chain: classpath:/peer.pem
+#      private-key: classpath:/pkcs8_key.pem
+#      client-auth: require
+      enabled: false
+#      trust-cert-collection: classpath:/ca-chain.pem
