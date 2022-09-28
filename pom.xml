@@ -17,6 +17,7 @@
    </modules>
    <properties>
       <spring.boot.version>2.6.11</spring.boot.version>
+      <spring.cloud.version>2021.0.4</spring.cloud.version>
       <fabric8.docker.version>0.40.2</fabric8.docker.version>
       <logstash-logback-encoder.version>6.6</logstash-logback-encoder.version>
       <fluency.version>2.5.1</fluency.version>
@@ -36,7 +37,7 @@
       <docker.java.base.image>${local.docker.registry}base-image:${project.version}</docker.java.base.image>
       <docker.base.image>registry.access.redhat.com/ubi8/openjdk-11:1.13-1.1655306377</docker.base.image>
       <fluentd.base.image>govtechsg/fluentd-elasticsearch:1.13.0</fluentd.base.image>
-      <helm.mave.version>6.3.0</helm.mave.version>
+      <helm.maven.version>6.3.0</helm.maven.version>
    </properties>
 
    <dependencyManagement>
@@ -48,6 +49,14 @@
             <type>pom</type>
             <scope>import</scope>
          </dependency>
+         <dependency>
+             <groupId>org.springframework.cloud</groupId>
+             <artifactId>spring-cloud-dependencies</artifactId>
+             <version>${spring.cloud.version}</version>
+             <type>pom</type>
+             <scope>import</scope>
+         </dependency>
+
 
          <dependency>
             <groupId>com.test</groupId>
@@ -130,6 +139,7 @@
             <plugin>
                <groupId>org.springframework.boot</groupId>
                <artifactId>spring-boot-maven-plugin</artifactId>
+               <version>${spring.boot.version}</version>
                <executions>
                   <execution>
                      <id>build-info</id>
@@ -186,7 +196,7 @@
             <plugin>
               <groupId>io.kokuwa.maven</groupId>
               <artifactId>helm-maven-plugin</artifactId>
-              <version>${helm.mave.version}</version>
+              <version>${helm.maven.version}</version>
                <executions>
                   <execution>
                      <goals>
