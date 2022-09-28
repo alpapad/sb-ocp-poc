@@ -1,5 +1,8 @@
-debug: true
-
+spring:
+  main:
+    banner-mode: log
+  application:
+   name: grpc-client
 
 grpc:
   default-scheme: dns
@@ -9,4 +12,8 @@ grpc:
       negotiation-type: PLAINTEXT
       security:
         client-auth-enabled: false
-    
+
+logging:
+  fluentd:
+    host: ${APP_FLUENTD_HOST:localhost}
+    port: ${APP_FLUENTD_PORT:24224}

@@ -1,8 +1,10 @@
 version: "2" 
 services:
+
   config-map:
     image: alpapad/dummy-config-map:latest
     container_name: config-map
+
   spring-grpc-server:
     hostname: grpcserver
     container_name: grpcserver
@@ -11,10 +13,43 @@ services:
        - 9090:9090
     volumes_from:
       - config-map:ro
+    links:
+      - fluentd
+
   spring-grpc-client:
     hostname: grpcclient
     container_name: grpcclient
     image: alpapad/spring-grpc-client:latest
     volumes_from:
       - config-map:ro
+    links:
+      - fluentd
+
+  fluentd:
+    hostname: fluentd
+    container_name: fluentd
+    image: alpapad/base-fluentd:latest
+    links:
+      - "elasticsearch"
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp"
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.13.1
+    container_name: elasticsearch
+    environment:
+      - "discovery.type=single-node"
+    expose:
+      - "9200"
+    ports:
+      - "9200:9200"
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.13.1
+    container_name: kibana
+    links:
+      - "elasticsearch"
+    ports:
+      - "5601:5601"
 

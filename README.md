@@ -17,6 +17,15 @@ The plugin is capable of using authentication info configured in settings.xml
 ### Docker plugin
 The fabric8 docker plugin is used (not the spotify one), which is capable of replacing maven variables in the dockerfile. The plugin is capable of using authentication info configured in settings.xml
 
+### Elastic, Kibana, fluentd
+
+
+Navigate to http://localhost:5601/app/management/kibana/indexPatterns/create and create an index
+using as index pattern name `fluentd-*` and and as primary time filed `@timestamp`
+
+In `Discover` view, select `fluentd-*` as index name and you can browse the logs
+
+ 
 
 ## Future work
  - Implement proper helm charts, allowing the application to be show-cased in a live OCP instance

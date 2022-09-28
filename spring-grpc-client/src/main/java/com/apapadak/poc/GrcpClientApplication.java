@@ -2,6 +2,8 @@ package com.apapadak.poc;
 
 import java.util.UUID;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +16,7 @@ import com.apapadak.poc.service.GrpcClientService;
 @SpringBootApplication
 @EnableScheduling
 public class GrcpClientApplication {
+    private static Logger logger = LoggerFactory.getLogger(GrcpClientApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(GrcpClientApplication.class, args);
@@ -25,6 +28,6 @@ public class GrcpClientApplication {
     @Scheduled(fixedRate = 1000)
     public void schedule() {
         EmployeeResponse response = service.getEmployeeRecord(UUID.randomUUID().toString());
-        System.err.println(response.getEmpId() + " -> " + response.getName());
+        logger.info(response.getEmpId() + " -> " + response.getName());
     }
 }

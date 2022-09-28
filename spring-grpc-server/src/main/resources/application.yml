@@ -2,7 +2,7 @@ spring:
   main:
     banner-mode: log
   application:
-   name: test-microservice
+   name: grpc-server
    
 grpc:
   server:
@@ -13,3 +13,8 @@ grpc:
 #      client-auth: require
       enabled: false
 #      trust-cert-collection: classpath:/ca-chain.pem
+
+logging:
+  fluentd:
+    host: ${APP_FLUENTD_HOST:localhost}
+    port: ${APP_FLUENTD_PORT:24224}
