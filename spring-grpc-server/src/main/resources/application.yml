@@ -3,7 +3,12 @@ spring:
     banner-mode: log
   application:
    name: grpc-server
-   
+  kafka:
+   bootstrap-servers: ${APP_KAFKA_SERVERS:localhost:29092}
+   producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
 grpc:
   server:
     port: 9090

@@ -5,6 +5,18 @@ services:
     image: alpapad/dummy-config-map:latest
     container_name: config-map
 
+  spring-kafka-receiver:
+    hostname: kafkareceiver
+    container_name: kafkareceiver
+    image: alpapad/kafka-receiver:latest
+    ports:
+       - 9081:9081
+    volumes_from:
+      - config-map:ro
+    links:
+      - fluentd
+      - kafka
+
   spring-grpc-server:
     hostname: grpcserver
     container_name: grpcserver
@@ -15,6 +27,8 @@ services:
       - config-map:ro
     links:
       - fluentd
+      - kafka
+      - spring-kafka-receiver
 
   spring-grpc-client:
     hostname: grpcclient
@@ -24,6 +38,7 @@ services:
       - config-map:ro
     links:
       - fluentd
+      - spring-grpc-server
 
   fluentd:
     hostname: fluentd
@@ -52,4 +67,32 @@ services:
       - "elasticsearch"
     ports:
       - "5601:5601"
+
+
+  zookeeper:
+    container_name: zookeeper
+    hostname: zookeeper
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 22181:2181
+  
+  kafka:
+    container_name: kafka
+    hostname: kafka
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper
+    ports:
+      - 29092:29092
+      - 9092:9092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 

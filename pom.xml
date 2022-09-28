@@ -14,17 +14,21 @@
       <module>grpc-proto</module>
       <module>spring-grpc-server</module>
       <module>spring-grpc-client</module>
+      <module>kafka-payload-proto</module>
+      <module>kafka-receiver</module>
    </modules>
    <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+      <java.version>11</java.version>
+      <maven.compiler.target>${java.version}</maven.compiler.target>
+      <maven.compiler.source>${java.version}</maven.compiler.source>
+      
       <spring.boot.version>2.6.11</spring.boot.version>
       <spring.cloud.version>2021.0.4</spring.cloud.version>
       <fabric8.docker.version>0.40.2</fabric8.docker.version>
       <logstash-logback-encoder.version>6.6</logstash-logback-encoder.version>
       <fluency.version>2.5.1</fluency.version>
-
-      <java.version>11</java.version>
-      <maven.compiler.target>${java.version}</maven.compiler.target>
-      <maven.compiler.source>${java.version}</maven.compiler.source>
 
       <protobuf.version>3.21.6</protobuf.version>
       <protobuf-plugin.version>0.6.1</protobuf-plugin.version>
@@ -67,6 +71,12 @@
          <dependency>
             <groupId>com.test</groupId>
             <artifactId>grpc-proto</artifactId>
+            <version>${project.version}</version>
+         </dependency>
+
+         <dependency>
+            <groupId>com.test</groupId>
+            <artifactId>kafka-payload-proto</artifactId>
             <version>${project.version}</version>
          </dependency>
 
@@ -117,6 +127,8 @@
           <artifactId>fluency-core</artifactId>
           <version>${fluency.version}</version>
         </dependency>
+
+
         <dependency>
           <groupId>org.komamitsu</groupId>
           <artifactId>fluency-fluentd</artifactId>

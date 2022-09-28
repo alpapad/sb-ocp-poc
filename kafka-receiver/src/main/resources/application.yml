@@ -1,0 +1,18 @@
+server:
+  port: 9081
+spring:
+  main:
+    banner-mode: log
+  application:
+   name: kafka-receiver
+  kafka:
+    bootstrap-servers: ${APP_KAFKA_SERVERS:localhost:29092}
+    consumer:
+      group-id: group_id
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+logging:
+  fluentd:
+    host: ${APP_FLUENTD_HOST:localhost}
+    port: ${APP_FLUENTD_PORT:24224}
