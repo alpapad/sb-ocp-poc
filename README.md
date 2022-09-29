@@ -25,12 +25,13 @@ using as index pattern name `fluentd-*` and and as primary time filed `@timestam
 
 In `Discover` view, select `fluentd-*` as index name and you can browse the logs
 
- 
+### Tracing
+
+The poc showcases how traces info (traceid/spanid) from a grpc client -> grpc-server -> kafka -> kafka-consumer can be propagated and be available in logging.
+
 
 ## Future work
  - Implement proper helm charts, allowing the application to be show-cased in a live OCP instance
  - Implement a master helm chart, so applications can be bundled as a release
- - Add a fluentd demo case
  - Improve the base image with remote debugging options/configuration (missing, but one can set the variables in docker-compose)
  - Expose more information from the pods for logging
-    - showcase opentelemetry headers logging
