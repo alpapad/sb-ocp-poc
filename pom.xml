@@ -16,6 +16,7 @@
       <module>spring-grpc-client</module>
       <module>kafka-payload-proto</module>
       <module>kafka-receiver</module>
+      <module>volume-copy-img</module>
    </modules>
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -205,7 +206,7 @@
                   </images>
                </configuration>
             </plugin>
-            <plugin>
+            <!-- plugin>
               <groupId>io.kokuwa.maven</groupId>
               <artifactId>helm-maven-plugin</artifactId>
               <version>${helm.maven.version}</version>
@@ -222,7 +223,7 @@
                      </configuration>
                   </execution>
                </executions>
-            </plugin>
+            </plugin -->
             <plugin>
                <groupId>org.xolstice.maven.plugins</groupId>
                <artifactId>protobuf-maven-plugin</artifactId>
