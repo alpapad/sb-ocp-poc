@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class FluentdLogginProperties {
 
     private String host = "localhost";
-    private int port = Integer.valueOf(24224);
+    private int port = 24224;
 
     public String getHost() {
         return host;
