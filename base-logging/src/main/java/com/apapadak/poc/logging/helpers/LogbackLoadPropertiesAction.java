@@ -25,7 +25,7 @@ public class LogbackLoadPropertiesAction extends Action {
     @Override
     public void begin(InterpretationContext context, String elementName, Attributes attributes) throws ActionException {
         String source = attributes.getValue(SOURCE_ATTRIBUTE);
-        if (OptionHelper.isEmpty(source) || OptionHelper.isEmpty(source)) {
+        if (OptionHelper.isEmpty(source)) {
             addError("The \"source\" attributes of <loadProperties> must be set");
         }
 
