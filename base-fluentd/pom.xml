@@ -4,7 +4,7 @@
    <parent>
       <groupId>com.test</groupId>
       <artifactId>docker-mvn-poc</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>0.0.1</version>
    </parent>
    <artifactId>base-fluentd</artifactId>
    <packaging>pom</packaging>
