@@ -5,7 +5,7 @@
     <artifactId>docker-mvn-poc</artifactId>
     <version>2023.12.3-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <modules>
+    <modules> 
         <module>base-image</module>
         <module>dummy-config-map</module>
         <module>base-fluentd</module>
