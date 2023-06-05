@@ -3,7 +3,7 @@
   <parent>
     <groupId>com.test</groupId>
     <artifactId>docker-mvn-poc</artifactId>
-    <version>2023.12.2</version>
+    <version>2023.12.3-SNAPSHOT</version>
   </parent>
   <artifactId>dummy-config-map</artifactId>
   <packaging>pom</packaging>
