@@ -4,7 +4,7 @@
    <parent>
       <groupId>com.test</groupId>
       <artifactId>docker-mvn-poc</artifactId>
-      <version>2023.12.2-SNAPSHOT</version>
+      <version>2023.12.2</version>
    </parent>
    <artifactId>spring-grpc-client</artifactId>
 
