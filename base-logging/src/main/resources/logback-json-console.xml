@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <included>
-   <include resource="logback-common.xml" />
+	<include resource="logback-common.xml" />
 
-   <appender name="JSON_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-      <encoder class="net.logstash.logback.encoder.LogstashEncoder">
-         <includeCallerData>true</includeCallerData>
-         <customFields>{"version":"${ext.build.version}","microservice": "${application.name}"}</customFields>
-      </encoder>
-   </appender>
-   <root level="INFO">
-      <appender-ref ref="JSON_CONSOLE" />
-   </root>
-   
-   <property name="jsonConsole" value="true" />
+	<appender name="JSON_CONSOLE"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="net.logstash.logback.encoder.LogstashEncoder">
+			<includeCallerData>true</includeCallerData>
+			<customFields>{"version":"${ext.build.version}","microservice":
+				"${application.name}"}</customFields>
+		</encoder>
+	</appender>
+	<root level="INFO">
+		<appender-ref ref="JSON_CONSOLE" />
+	</root>
+
+	<property name="jsonConsole" value="true" />
 </included>
